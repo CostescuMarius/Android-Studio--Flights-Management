@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">FlightsManagement</string>
+    <string name="search_ticket">SEARCH TICKET</string>
+    <string name="all_tickets">ALL TICKETS</string>
+    <string name="full">FULL</string>
+    <string name="student">STUDENT</string>
+    <string name="under1">UNDER 1 YEAR</string>
+
+    <string name="departure">Departure Airport</string>
+    <string name="arrival">Arrival Airport</string>
+    <string name="date">Date</string>
+    <string name="date_format">MM/DD/YYYY</string>
+
+    <string name="back_button_description">Back</string>
+
+    <string name="app_title">Flights Management</string>
+    <string name="tickets_found">Tickets Found</string>
+
+    <string name="buy_ticket">Payment</string>
+    <string name="card_info">Card Info</string>
+    <string name="confirm_payment">Confirm</string>
+    <string name="card_number">Card Number</string>
+    <string name="CVV">CVV</string>
+    <string name="expiration_date">Expiry Date (MM/YY)</string>
+
+    <string-array name="departureAirports">
+        <item>Departure Airport 1</item>
+        <item>Departure Airport 2</item>
+        <item>Departure Airport 3</item>
+    </string-array>
+
+    <string-array name="arrivalAirports">
+        <item>Arrival Airport 1</item>
+        <item>Arrival Airport 2</item>
+        <item>Arrival Airport 3</item>
+    </string-array>
+</resources>
