@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SearchTickets extends AppCompatActivity {
     private ArrayList<Ticket> tickets;
@@ -44,6 +46,7 @@ public class SearchTickets extends AppCompatActivity {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
                 LinearLayoutManager.VERTICAL);
+        dividerItemDecoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.divider)));
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         ImageView backButton = findViewById(R.id.arrow_back);
