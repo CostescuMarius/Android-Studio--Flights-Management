@@ -1,4 +1,4 @@
-package com.example.flightsmanagement;
+package com.example.flightsmanagement.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.flightsmanagement.R;
+import com.example.flightsmanagement.data.Ticket;
 
 import java.util.List;
 
@@ -72,7 +75,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketView
             if (position != RecyclerView.NO_POSITION) {
                 Ticket ticket = ticketList.get(position);
 
-                Intent intent = new Intent(itemView.getContext(), BuyTicket.class);
+                Intent intent = new Intent(itemView.getContext(), BuyTicketActivity.class);
                 intent.putExtra("ticket", ticket);
                 itemView.getContext().startActivity(intent);
             }

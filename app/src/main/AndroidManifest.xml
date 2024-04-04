@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,10 +27,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchTickets" >
+            android:name=".ui.BookTicketActivity" >
         </activity>
         <activity
-            android:name=".BuyTicket" >
+            android:name=".ui.SearchTicketsActivity" >
+        </activity>
+        <activity
+            android:name=".ui.BuyTicketActivity" >
+        </activity>
+        <activity
+            android:name=".ui.TicketQRActivity" >
+        </activity>
+        <activity
+            android:name=".ui.ScanQRActivity">
         </activity>
     </application>
 

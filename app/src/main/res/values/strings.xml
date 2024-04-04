@@ -23,6 +23,14 @@
     <string name="CVV">CVV</string>
     <string name="expiration_date">Expiry Date (MM/YY)</string>
 
+    <string name="ticket_qr">Ticket Information</string>
+
+    <string name="book_ticket">Book Ticket</string>
+
+    <string name="scan_ticket">Scan QR Ticket</string>
+
+    <string name="scan">Start Scanning</string>
+
     <string-array name="departureAirports">
         <item>Departure Airport 1</item>
         <item>Departure Airport 2</item>

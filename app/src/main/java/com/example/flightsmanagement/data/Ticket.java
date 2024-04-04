@@ -1,4 +1,4 @@
-package com.example.flightsmanagement;
+package com.example.flightsmanagement.data;
 
 import java.io.Serializable;
 import java.sql.Date;
