@@ -22,6 +22,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.flightsmanagement.MainActivity;
 import com.example.flightsmanagement.R;
 import com.example.flightsmanagement.data.Ticket;
+import com.example.flightsmanagement.util.TicketInfo;
+import com.example.flightsmanagement.util.TimeFormat;
+
+import java.util.Date;
 
 public class BuyTicketActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
@@ -41,12 +45,10 @@ public class BuyTicketActivity extends AppCompatActivity {
             Ticket ticket = (Ticket) currentIntent.getSerializableExtra("ticket");
 
             TextView ticketInfoTextView = findViewById(R.id.ticketInfoTextView);
+
             assert ticket != null;
-            ticketInfoTextView.setText("From: " + ticket.getDepartureAirport() + "         " +
-                    "To: " + ticket.getArrivalAirport() + "\n" +
-                    "Interval: " + ticket.getDepartureTime() + " <-> " + ticket.getArrivalTime() + "\n" +
-                    "Date: " + ticket.getDate() + "\n" +
-                    "Price: " + ticket.getPrice());
+
+            ticketInfoTextView.setText(TicketInfo.generateTicketInfo(ticket));
 
             Button confirmButton = findViewById(R.id.buttonConfirmPayment);
             confirmButton.setOnClickListener(v -> {
@@ -60,8 +62,9 @@ public class BuyTicketActivity extends AppCompatActivity {
 
         ImageView backButton = findViewById(R.id.arrow_back);
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), SearchTicketsActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(getApplicationContext(), SearchTicketsActivity.class);
+            //startActivity(intent);
+            finish();
         });
     }
 

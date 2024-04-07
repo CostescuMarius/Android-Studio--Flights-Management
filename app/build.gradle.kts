@@ -43,4 +43,7 @@ dependencies {
     androidTestImplementation(libs.espresso.core);
 
     implementation(libs.zxing.android.embedded)
+
+    implementation(libs.squareup.retrofit)
+    implementation(libs.converter.gson)
 }

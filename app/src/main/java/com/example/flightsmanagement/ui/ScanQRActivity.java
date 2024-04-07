@@ -36,8 +36,7 @@ public class ScanQRActivity extends AppCompatActivity {
 
         ImageView backButton = findViewById(R.id.arrow_back);
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+            finish();
         });
 
         Button scanButton = findViewById(R.id.scan_button);

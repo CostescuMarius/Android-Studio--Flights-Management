@@ -2,6 +2,7 @@ package com.example.flightsmanagement.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.flightsmanagement.R;
 import com.example.flightsmanagement.data.Ticket;
+import com.example.flightsmanagement.util.TimeFormat;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketViewHolder> {
@@ -34,10 +38,15 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketView
     public void onBindViewHolder(@NonNull TicketViewHolder holder, int position) {
         Ticket ticket = ticketList.get(position);
         holder.departureAirportTextView.setText("Departure: " + ticket.getDepartureAirport());
-        holder.departureTimeTextView.setText("Departure time: " + ticket.getDepartureTime());
+
+        Date departureDate = new Date(Long.parseLong(ticket.getDepartureTime()));
+        holder.departureTimeTextView.setText("Departure time: " + TimeFormat.fullDateFormat.format(departureDate));
+
         holder.arrivalAirportTextView.setText("Arrival: " + ticket.getArrivalAirport());
-        holder.arrivalTimeTextView.setText("Arrival time: " + ticket.getArrivalTime());
-        holder.dateTextView.setText("Date:" + ticket.getDate().toString());
+
+        Date arrivalDate = new Date(Long.parseLong(ticket.getArrivalTime()));
+        holder.arrivalTimeTextView.setText("Arrival time: " + TimeFormat.fullDateFormat.format(arrivalDate));
+
         holder.priceTextView.setText("Price: " + ticket.getPrice());
         holder.typeTextView.setText("Type: " + ticket.getType());
     }

@@ -2,44 +2,59 @@ package com.example.flightsmanagement.data;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Ticket implements Serializable {
-    private String departureAirport;
-    private String departureTime;
-    private String arrivalAirport;
-    private String arrivalTime;
-    private Date date;
-    private double price;
+    private int ticketId;
+
+    private String departureAirportName;
+
+    private String departureLocation;
+
+    private String arrivalAirportName;
+
+    private String arrivalLocation;
+
+    private Timestamp departureDate;
+
+    private Timestamp arrivalDate;
+
     private String type;
 
-    public Ticket() {
-        this.departureAirport = "-";
-        this.departureTime = "00:00";
-        this.arrivalAirport = "-";
-        this.arrivalTime = "00:00";
-        this.date = new Date(0);
-        this.price = 0.0f;
-        this.type = "-";
+    private double price;
+
+    private int stock;
+
+    public Ticket(int ticketId, String departureAirportName, String departureLocation,
+                  String arrivalAirportName, String arrivalLocation,
+                  Timestamp departureDate, Timestamp arrivalDate,
+                  String type, double price, int stock) {
+        this.ticketId = ticketId;
+        this.departureAirportName = departureAirportName;
+        this.departureLocation = departureLocation;
+        this.arrivalAirportName = arrivalAirportName;
+        this.arrivalLocation = arrivalLocation;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.type = type;
+        this.price = price;
+        this.stock = stock;
     }
 
     public String getDepartureAirport() {
-        return departureAirport;
+        return departureAirportName;
     }
 
     public String getDepartureTime() {
-        return departureTime;
+        return "" + departureDate.getTime();
     }
 
     public String getArrivalAirport() {
-        return arrivalAirport;
+        return arrivalAirportName;
     }
 
     public String getArrivalTime() {
-        return arrivalTime;
-    }
-
-    public Date getDate() {
-        return date;
+        return "" + arrivalDate.getTime();
     }
 
     public double getPrice() {
@@ -48,33 +63,5 @@ public class Ticket implements Serializable {
 
     public String getType() {
         return type;
-    }
-
-    public void setDepartureAirport(String departureAirport) {
-        this.departureAirport = departureAirport;
-    }
-
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
-    }
-
-    public void setArrivalAirport(String arrivalAirport) {
-        this.arrivalAirport = arrivalAirport;
-    }
-
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 }

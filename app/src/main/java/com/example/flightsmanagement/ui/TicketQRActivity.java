@@ -17,10 +17,14 @@ import android.graphics.Color;
 import com.example.flightsmanagement.MainActivity;
 import com.example.flightsmanagement.R;
 import com.example.flightsmanagement.data.Ticket;
+import com.example.flightsmanagement.util.TicketInfo;
+import com.example.flightsmanagement.util.TimeFormat;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+
+import java.util.Date;
 
 public class TicketQRActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
@@ -40,10 +44,7 @@ public class TicketQRActivity extends AppCompatActivity {
             Ticket ticket = (Ticket) currentIntent.getSerializableExtra("ticket");
 
             assert ticket != null;
-            
             generateQR(ticket);
-
-
         }
 
         ImageView backButton = findViewById(R.id.arrow_back);
@@ -54,11 +55,7 @@ public class TicketQRActivity extends AppCompatActivity {
     }
 
     private void generateQR(Ticket ticket) {
-        String textInQR = "From: " + ticket.getDepartureAirport() + "         " +
-                "To: " + ticket.getArrivalAirport() + "\n" +
-                "Interval: " + ticket.getDepartureTime() + " <-> " + ticket.getArrivalTime() + "\n" +
-                "Date: " + ticket.getDate() + "\n" +
-                "Price: " + ticket.getPrice();
+        String textInQR = TicketInfo.generateTicketInfo(ticket);
 
         int width = 500;
         int height = 500;

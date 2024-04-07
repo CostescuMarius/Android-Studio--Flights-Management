@@ -9,7 +9,7 @@
     <string name="departure">Departure Airport</string>
     <string name="arrival">Arrival Airport</string>
     <string name="date">Date</string>
-    <string name="date_format">MM/DD/YYYY</string>
+    <string name="date_format">YYYY-MM-DD</string>
 
     <string name="back_button_description">Back</string>
 
