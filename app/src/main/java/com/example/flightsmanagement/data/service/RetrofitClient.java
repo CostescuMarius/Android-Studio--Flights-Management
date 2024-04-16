@@ -1,4 +1,4 @@
-package com.example.flightsmanagement.database;
+package com.example.flightsmanagement.data.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

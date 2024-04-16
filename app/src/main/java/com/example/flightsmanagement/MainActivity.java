@@ -2,27 +2,17 @@ package com.example.flightsmanagement;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.flightsmanagement.database.ApiService;
-import com.example.flightsmanagement.database.RetrofitClient;
 import com.example.flightsmanagement.ui.BookTicketActivity;
 import com.example.flightsmanagement.ui.ScanQRActivity;
-import com.google.android.material.snackbar.Snackbar;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.flightsmanagement.ui.TicketsHistoryActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         CardView scanQR = findViewById(R.id.cardViewScanQRTicket);
         scanQR.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ScanQRActivity.class);
+            startActivity(intent);
+        });
+
+        CardView history = findViewById(R.id.cardViewHistoryTickets);
+        history.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), TicketsHistoryActivity.class);
             startActivity(intent);
         });
     }

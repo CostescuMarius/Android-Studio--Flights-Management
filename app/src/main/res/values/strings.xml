@@ -31,6 +31,10 @@
 
     <string name="scan">Start Scanning</string>
 
+    <string name="history_tickets">Tickets History</string>
+
+    <string name="customer_name">Customer Name</string>
+
     <string-array name="departureAirports">
         <item>Departure Airport 1</item>
         <item>Departure Airport 2</item>

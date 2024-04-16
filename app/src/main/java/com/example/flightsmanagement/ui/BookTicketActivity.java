@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,8 +18,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.flightsmanagement.R;
 import com.example.flightsmanagement.data.AirportListResponse;
-import com.example.flightsmanagement.database.ApiService;
-import com.example.flightsmanagement.database.RetrofitClient;
+import com.example.flightsmanagement.data.service.ApiService;
+import com.example.flightsmanagement.data.service.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.flightsmanagement.R;
+import com.example.flightsmanagement.data.CheckTicketDto;
 import com.example.flightsmanagement.data.Ticket;
 import com.example.flightsmanagement.data.service.ApiService;
-import com.example.flightsmanagement.data.CheckTicketDto;
 import com.example.flightsmanagement.data.service.RetrofitClient;
 
 import java.util.ArrayList;
@@ -26,22 +26,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchTicketsActivity extends AppCompatActivity {
+public class TicketsHistoryActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_tickets);
+        setContentView(R.layout.history_tickets);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.search_tickets), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        CheckTicketDto checkTicketInfo = new CheckTicketDto(getIntent().getStringExtra("departure"),
-                getIntent().getStringExtra("arrival"),
-                getIntent().getStringExtra("date"));
-        getTickets(checkTicketInfo);
+        getTickets();
 
         ImageView backButton = findViewById(R.id.arrow_back);
         backButton.setOnClickListener(v -> {
@@ -49,41 +46,20 @@ public class SearchTicketsActivity extends AppCompatActivity {
         });
     }
 
-    private void getTickets(CheckTicketDto checkTicketInfo) {
+    private void getTickets() {
         ApiService apiService = RetrofitClient.getClient("http://10.0.2.2:8080").create(ApiService.class);
 
-        Call<List<Ticket>> ticketsCall = apiService.checkAvailableTickets(checkTicketInfo);
+        Call<List<Ticket>> ticketsCall = apiService.getAllBoughtTickets();
         ticketsCall.enqueue(new Callback<List<Ticket>>() {
             @Override
             public void onResponse(@NonNull Call<List<Ticket>> call, @NonNull Response<List<Ticket>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null && !response.body().isEmpty()) {
-                        String category = getIntent().getStringExtra("category");
                         List<Ticket> ticketsFound = response.body();
-                        List<Ticket> ticketsToShow = new ArrayList<>();
-
-                        switch(category) {
-                            case "All":
-                                ticketsToShow = ticketsFound;
-                                break;
-                            case "Full":
-                                extract_tickets(ticketsFound, ticketsToShow, "Full");
-                                break;
-                            case "Student":
-                                extract_tickets(ticketsFound, ticketsToShow, "Student");
-                                break;
-                            case "Child":
-                                extract_tickets(ticketsFound, ticketsToShow, "Child");
-                                break;
-                            default:
-                                ticketsToShow = ticketsFound;
-                                break;
-                        }
-
 
                         RecyclerView recyclerView = findViewById(R.id.tickets_recycler_view);
 
-                        TicketAdapter adapter = new TicketAdapter(ticketsToShow);
+                        HistoryTicketAdapter adapter = new HistoryTicketAdapter(ticketsFound);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                         Toast.makeText(getApplicationContext(), "Tickets have been found", Toast.LENGTH_SHORT).show();
